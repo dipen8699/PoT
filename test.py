@@ -6,9 +6,9 @@ from main import MainAgentWithTools
 
 import util
 from langchain.tools import Tool
-from langchain.agents.agent_toolkits import FileManagementToolkit
+from langchain_community.agent_toolkits import FileManagementToolkit
 
-from langchain.utilities import GoogleSearchAPIWrapper
+from langchain_community.utilities import GoogleSearchAPIWrapper
 
 from tools.toolRegistration import tool_registration_tool, query_available_modules
 from tools.queryTool import tool_query_tool
@@ -50,13 +50,13 @@ tools = [GoogleSearchTool,
 tool_making_agent = MainAgentWithTools(name="ToolCreator",
                                            system_message=system_prompt_scribe,
                                            model=ChatOpenAI(
-                                               model_name='gpt-4',
+                                               model_name='gpt-4o-mini',
                                                streaming=True,
                                                temperature=0.0,
                                                callbacks=[StreamingStdOutCallbackHandler()]),
                                            tools=tools)
 
-tool_making_agent.receive("HumanUser", "can you create new excel file and store it in ./testoutput")
+tool_making_agent.receive("HumanUser", "can you create a tool that push my cuurent directry files on my github repo")
 
 tool_making_agent.send()
 
