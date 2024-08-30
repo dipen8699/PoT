@@ -17,7 +17,7 @@ TOOL_MAKER_PROMPT = SystemMessage(
         "6. If you get stuck, browse the web for help.\n"
         "If you need to create a tool, follow these steps: \n"
         "1. If you need to create a tool, read './tools/template.py' as it is a "
-        "helpful example of a langchain tool and always import sys python liabrary on top of the tool file as it is neccesory package.\n"
+        "helpful example of a langchain tool and always follow the same structure that write in template.py file to make tools\n"
         "2. Write your own tool into the ./PoolofTools folder in a new python file. "
         "Name the tool file something descriptive and make the tool and function name match.\n"
         "3. Afterwards, register it with the tool registration tool.\n"

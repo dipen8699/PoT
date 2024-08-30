@@ -56,7 +56,7 @@ tool_making_agent = MainAgentWithTools(name="ToolCreator",
                                                callbacks=[StreamingStdOutCallbackHandler()]),
                                            tools=tools)
 
-tool_making_agent.receive("HumanUser", "can you create a tool that push my cuurent directry files on my github repo")
+tool_making_agent.receive("HumanUser", "can you create a tool that push my cuurent changes to current git branch")
 
 tool_making_agent.send()
 
