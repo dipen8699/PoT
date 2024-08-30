@@ -3,7 +3,7 @@ import requests
 import sys
 from langchain.tools import tool
 
-@tool("verify_and_install_library", return_direct=True)
+@tool("verify_and_install_library", return_direct=False)
 def verify_and_install_library(library_name: str) -> str:
     """
     This tool allows the agent to verify a Python library on PyPI and install it if it is safe.
@@ -31,10 +31,6 @@ def verify_and_install_library(library_name: str) -> str:
     if last_release_date and last_release_date < '2022-01-01':
         return f"Library '{library_name}' has not been updated recently."
 
-    maintainers = info.get('maintainers', [])
-    if not maintainers:
-        return f"Library '{library_name}' appears to have no maintainers."
-
     try:
         subprocess.check_call([sys.executable, "-m", "pip", "install", library_name])
         return f"Library '{library_name}' installed successfully."
@@ -42,5 +38,5 @@ def verify_and_install_library(library_name: str) -> str:
         return f"Failed to install '{library_name}': {e}"
 
 # Example usage if needed for testing
-if __name__ == "__main__":
-    print(verify_and_install_library("requests"))
+# if __name__ == "__main__":
+#     print(verify_and_install_library("requests"))
